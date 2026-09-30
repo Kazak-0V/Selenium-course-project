@@ -27,3 +27,11 @@ class ProductPage(BasePage):
         ).text
         assert product_price == basket_total, \
             f"Basket total '{basket_total}' does not match product price '{product_price}'"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not disappeared"
